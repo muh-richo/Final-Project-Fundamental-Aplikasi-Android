@@ -15,7 +15,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class DetailUserActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityDetailUserBinding
+    private lateinit var binding: ActivityDetailUserBinding
     private val viewModel by viewModels<DetailViewModel>()
 
     companion object {
