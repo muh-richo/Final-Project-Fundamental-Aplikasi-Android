@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Github User App</string>
+
+    <string name="nama_user">Muhammad Richo Abadinata</string>
+    <string name="searchbar_hint">Masukkan user yang dicari</string>
+    <string name="back_button">tombol_back</string>
+    <string name="detail_user">Detail User</string>
+    <string name="username">muh-richo</string>
+    <string name="jumlah_followers">157 Followers</string>
+    <string name="jumlah_following">127 Following</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_text_1">Followers</string>
+    <string name="tab_text_2">Following</string>
+</resources>
