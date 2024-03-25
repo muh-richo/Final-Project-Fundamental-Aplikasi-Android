@@ -9,7 +9,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubuserapp.data.response.ItemsItem
 import com.example.githubuserapp.databinding.ActivityMainBinding
-import com.example.githubuserapp.ui.detailuser.DetailUser
+import com.example.githubuserapp.ui.detailuser.DetailUserActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -75,8 +75,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSelectedUser(data: ItemsItem) {
-        val moveWithParcelableIntent = Intent(this@MainActivity, DetailUser::class.java)
-        moveWithParcelableIntent.putExtra(DetailUser.EXTRA_USER, data)
+        val moveWithParcelableIntent = Intent(this@MainActivity, DetailUserActivity::class.java)
+        moveWithParcelableIntent.putExtra(DetailUserActivity.EXTRA_USER, data)
         startActivity(moveWithParcelableIntent)
     }
 }

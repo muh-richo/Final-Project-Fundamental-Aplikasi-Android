@@ -13,7 +13,7 @@ import com.example.githubuserapp.data.response.ItemsItem
 import com.example.githubuserapp.databinding.ActivityDetailUserBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
-class DetailUser : AppCompatActivity() {
+class DetailUserActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityDetailUserBinding
     private val viewModel by viewModels<DetailViewModel>()
@@ -50,16 +50,12 @@ class DetailUser : AppCompatActivity() {
         setViewPager(current_user)
     }
 
-    private fun showLoading(isLoading: Boolean) {
-        if (isLoading) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.GONE
-        }
+    private fun showLoading(state: Boolean) {
+        binding.progressBar.visibility = if (state) View.VISIBLE else View.GONE
     }
 
     private fun setShowUser(listUser: DetailUserResponse) {
-        Glide.with(this@DetailUser)
+        Glide.with(this@DetailUserActivity)
             .load(listUser.avatarUrl)
             .circleCrop()
             .into(binding.ivProfil)

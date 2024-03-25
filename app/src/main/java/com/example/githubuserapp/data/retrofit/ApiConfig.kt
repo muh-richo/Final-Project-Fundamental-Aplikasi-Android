@@ -8,13 +8,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiConfig {
     companion object {
-    private const val apiToken = BuildConfig.API_TOKEN
+        private const val API_TOKEN = BuildConfig.API_TOKEN
+        private const val BASE_URL = BuildConfig.BASE_URL
 
         fun getApiService(): ApiService {
             val authInterceptor = Interceptor { chain ->
                 val req = chain.request()
                 val requestHeaders = req.newBuilder()
-                    .addHeader("Authorization", apiToken)
+                    .addHeader("Authorization", API_TOKEN)
                     .build()
                 chain.proceed(requestHeaders)
             }
@@ -22,7 +23,7 @@ class ApiConfig {
                 .addInterceptor(authInterceptor)
                 .build()
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
