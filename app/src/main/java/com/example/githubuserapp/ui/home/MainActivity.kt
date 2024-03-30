@@ -2,11 +2,13 @@ package com.example.githubuserapp.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.githubuserapp.R
 import com.example.githubuserapp.data.response.ItemsItem
 import com.example.githubuserapp.databinding.ActivityMainBinding
 import com.example.githubuserapp.ui.detailuser.DetailUserActivity
@@ -33,6 +35,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         search(binding)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.option_menu, menu)
+        return true
     }
 
     private fun showLoading(isLoading: Boolean) {
