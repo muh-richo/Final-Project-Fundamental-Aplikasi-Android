@@ -1,4 +1,4 @@
-package com.example.githubuserapp
+package com.example.githubuserapp.ui.viewmodelfactory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -6,7 +6,7 @@ import com.example.githubuserapp.ui.home.HomeViewModel
 import com.example.githubuserapp.ui.settings.SettingPreferences
 import com.example.githubuserapp.ui.settings.SettingViewModel
 
-class ViewModelFactory(private val pref: SettingPreferences) : ViewModelProvider.NewInstanceFactory() {
+class ThemeViewModelFactory(private val pref: SettingPreferences) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

@@ -11,10 +11,11 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubuserapp.R
-import com.example.githubuserapp.ViewModelFactory
+import com.example.githubuserapp.ui.viewmodelfactory.ThemeViewModelFactory
 import com.example.githubuserapp.data.response.ItemsItem
 import com.example.githubuserapp.databinding.ActivityMainBinding
 import com.example.githubuserapp.ui.detailuser.DetailUserActivity
+import com.example.githubuserapp.ui.favourite.FavouriteUserActivity
 import com.example.githubuserapp.ui.settings.SettingActivity
 import com.example.githubuserapp.ui.settings.SettingPreferences
 import com.example.githubuserapp.ui.settings.datastore
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val pref = SettingPreferences.getInstance(application.datastore)
-        viewModel = ViewModelProvider(this@MainActivity, ViewModelFactory(pref)).get(HomeViewModel::class.java)
+        viewModel = ViewModelProvider(this@MainActivity, ThemeViewModelFactory(pref)).get(HomeViewModel::class.java)
 
         switchTheme(viewModel)
         search(binding)
@@ -78,7 +79,8 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.action_favourite -> {
-                // Tambahkan logika untuk menangani klik pada item-menu "action_favourite" di sini
+                val intent = Intent(this@MainActivity, FavouriteUserActivity::class.java)
+                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -119,7 +121,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showSelectedUser(data: ItemsItem) {
         val moveWithParcelableIntent = Intent(this@MainActivity, DetailUserActivity::class.java)
-        moveWithParcelableIntent.putExtra(DetailUserActivity.EXTRA_USER, data)
+        moveWithParcelableIntent.putExtra(DetailUserActivity.EXTRA_USER, data.login)
         startActivity(moveWithParcelableIntent)
     }
 }

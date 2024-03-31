@@ -23,7 +23,7 @@ class HomeViewModel(private val pref: SettingPreferences): ViewModel() {
 
     companion object {
         private const val TAG = "HomeViewModel"
-        private const val USER_ID = "arif"
+        private const val USER_ID = "richo"
     }
 
     init {

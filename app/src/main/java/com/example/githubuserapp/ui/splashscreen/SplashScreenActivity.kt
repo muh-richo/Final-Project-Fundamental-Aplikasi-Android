@@ -6,14 +6,16 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.githubuserapp.databinding.ActivitySplashScreenBinding
 import com.example.githubuserapp.ui.home.MainActivity
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashScreenBinding
-    private val SPLASH_TIME_OUT: Long = 3000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +25,10 @@ class SplashScreenActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        Handler().postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        lifecycleScope.launch {
+            delay(3000)
+            startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
             finish()
-        }, SPLASH_TIME_OUT)
+        }
     }
 }

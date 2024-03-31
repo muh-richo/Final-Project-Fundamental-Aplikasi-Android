@@ -8,7 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
-import com.example.githubuserapp.ViewModelFactory
+import com.example.githubuserapp.ui.viewmodelfactory.ThemeViewModelFactory
 import com.example.githubuserapp.databinding.ActivitySettingBinding
 import com.example.githubuserapp.ui.home.MainActivity
 
@@ -24,7 +24,7 @@ class SettingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val pref = SettingPreferences.getInstance(application.datastore)
-        viewModel = ViewModelProvider(this, ViewModelFactory(pref)).get(
+        viewModel = ViewModelProvider(this, ThemeViewModelFactory(pref)).get(
             SettingViewModel::class.java
         )
 

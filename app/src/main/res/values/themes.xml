@@ -12,6 +12,9 @@
 
     <style name="Theme.GithubUserApp" parent="Base.Theme.GithubUserApp">
         <item name="actionBarSize">50dp</item>
-        <item name="backgroundColor">@color/design_default_color_primary</item>
+    </style>
+
+    <style name="BackgroundColor">
+        <item name="tint">@color/black</item>
     </style>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.githubuserapp.ui.detailuser
+package com.example.githubuserapp.ui.follow
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -30,7 +30,8 @@ class FollowFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(FollowViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+            FollowViewModel::class.java)
 
         showRecyclerList()
 

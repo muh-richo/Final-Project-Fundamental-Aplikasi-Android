@@ -14,7 +14,6 @@
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/design_default_color_primary"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -30,7 +29,8 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/back_button"
                 android:onClick="onBackButtonClicked"
-                android:src="@drawable/ic_back" />
+                android:src="@drawable/ic_back"
+                style="@style/BackgroundColor"/>
 
             <TextView
                 android:id="@+id/tvDetailUser"
@@ -45,13 +45,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvNama" />
 
             <ImageView
-                android:id="@+id/btnSettings"
+                android:id="@+id/btnFavourite"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginEnd="16dp"
-                android:contentDescription="@string/back_button"
-                android:onClick="goToSettings"
-                android:src="@drawable/ic_settings"
+                android:contentDescription="@string/favourite_button"
+                android:onClick="goToFavourite"
+                style="@style/BackgroundColor"
+                android:src="@drawable/ic_favorite"
                 android:layout_gravity="end"/>
 
         </com.google.android.material.appbar.MaterialToolbar>
@@ -135,8 +136,7 @@
         android:layout_marginTop="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:tabTextColor="@android:color/black" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
@@ -147,5 +147,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabs" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_fav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/ic_unfavorite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/favourite" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

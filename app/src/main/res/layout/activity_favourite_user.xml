@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.settings.SettingActivity">
+    tools:context=".ui.favourite.FavouriteUserActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/back_button"
-                android:onClick="goToHome"
+                android:onClick="onBackButtonClicked"
                 style="@style/BackgroundColor"
                 android:src="@drawable/ic_back" />
 
@@ -36,7 +36,7 @@
                 android:id="@+id/tvSettings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/settings"
+                android:text="@string/favourite"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_marginStart="30dp"
@@ -47,15 +47,13 @@
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/switch_theme"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_favourite_user"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/dark_mode"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="8dp"
+        android:paddingBottom="105dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.githubuserapp.ui.detailuser
+package com.example.githubuserapp.ui.follow
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
