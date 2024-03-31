@@ -15,12 +15,16 @@
         android:theme="@style/Theme.GithubUserApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.detailuser.DetailUserActivity"
+            android:name=".ui.settings.SettingActivity"
             android:exported="false"
             android:theme="@style/Theme.GithubUserApp.NoActionBar"/>
         <activity
+            android:name=".ui.detailuser.DetailUserActivity"
+            android:exported="false"
+            android:theme="@style/Theme.GithubUserApp.NoActionBar" />
+        <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

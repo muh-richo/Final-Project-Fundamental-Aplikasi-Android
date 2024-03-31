@@ -3,20 +3,26 @@ package com.example.githubuserapp.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubuserapp.R
+import com.example.githubuserapp.ViewModelFactory
 import com.example.githubuserapp.data.response.ItemsItem
 import com.example.githubuserapp.databinding.ActivityMainBinding
 import com.example.githubuserapp.ui.detailuser.DetailUserActivity
+import com.example.githubuserapp.ui.settings.SettingActivity
+import com.example.githubuserapp.ui.settings.SettingPreferences
+import com.example.githubuserapp.ui.settings.datastore
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel by viewModels<HomeViewModel>()
+    private lateinit var viewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +30,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val pref = SettingPreferences.getInstance(application.datastore)
+        viewModel = ViewModelProvider(this@MainActivity, ViewModelFactory(pref)).get(HomeViewModel::class.java)
+
+        switchTheme(viewModel)
+        search(binding)
         showRecyclerList()
 
         viewModel.listUser.observe(this) {
@@ -34,12 +45,16 @@ class MainActivity : AppCompatActivity() {
             showLoading(it)
         }
 
-        search(binding)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.option_menu, menu)
-        return true
+    private fun switchTheme(viewModel: HomeViewModel) {
+        viewModel.getThemeSetting().observe(this@MainActivity) { isDarkModeActive: Boolean ->
+            if (isDarkModeActive) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -49,6 +64,27 @@ class MainActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.GONE
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.option_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                val intent = Intent(this@MainActivity, SettingActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_favourite -> {
+                // Tambahkan logika untuk menangani klik pada item-menu "action_favourite" di sini
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 
     private fun showRecyclerList() {
         val layoutInflater = LinearLayoutManager(this)

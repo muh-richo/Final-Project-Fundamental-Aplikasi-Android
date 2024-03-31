@@ -4,14 +4,16 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import com.example.githubuserapp.data.response.GithubResponse
 import com.example.githubuserapp.data.response.ItemsItem
 import com.example.githubuserapp.data.retrofit.ApiConfig
+import com.example.githubuserapp.ui.settings.SettingPreferences
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val pref: SettingPreferences): ViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -52,5 +54,9 @@ class HomeViewModel : ViewModel() {
                 Log.e(TAG, "onFailure: ${t.message}")
             }
         })
+    }
+
+    fun getThemeSetting(): LiveData<Boolean> {
+        return pref.getThemeSetting().asLiveData()
     }
 }

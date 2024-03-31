@@ -1,5 +1,6 @@
 package com.example.githubuserapp.ui.detailuser
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -11,6 +12,7 @@ import com.example.githubuserapp.R
 import com.example.githubuserapp.data.response.DetailUserResponse
 import com.example.githubuserapp.data.response.ItemsItem
 import com.example.githubuserapp.databinding.ActivityDetailUserBinding
+import com.example.githubuserapp.ui.settings.SettingActivity
 import com.google.android.material.tabs.TabLayoutMediator
 
 class DetailUserActivity : AppCompatActivity() {
@@ -76,5 +78,10 @@ class DetailUserActivity : AppCompatActivity() {
 
     fun onBackButtonClicked(view: View) {
         onBackPressed()
+    }
+
+    fun goToSettings(view: View){
+        val intent = Intent(this@DetailUserActivity, SettingActivity::class.java)
+        startActivity(intent)
     }
 }

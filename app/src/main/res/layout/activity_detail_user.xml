@@ -50,7 +50,7 @@
                 android:layout_height="25dp"
                 android:layout_marginEnd="16dp"
                 android:contentDescription="@string/back_button"
-                android:onClick="onBackButtonClicked"
+                android:onClick="goToSettings"
                 android:src="@drawable/ic_settings"
                 android:layout_gravity="end"/>
 
