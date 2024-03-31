@@ -92,7 +92,7 @@ class DetailUserActivity : AppCompatActivity() {
             favUser.login = detailUserList.login
             favUser.htmlUrl = detailUserList.htmlUrl
             viewModel.insertFavUser(favUser)
-            Toast.makeText(this@DetailUserActivity, "User sudah dimasukkan favourite!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@DetailUserActivity, "User dimasukkan ke Favourite!", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -123,7 +123,7 @@ class DetailUserActivity : AppCompatActivity() {
                 buttonState = false
                 binding.fabFav.setImageResource(R.drawable.ic_unfavorite)
                 viewModel.deleteFavUser(detailUserResponse.id!!)
-                Toast.makeText(this@DetailUserActivity, "User berhasil dihapus dari favourite!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@DetailUserActivity, "User dihapus dari Favourite!", Toast.LENGTH_SHORT).show()
             }
         }
     }
